@@ -1,40 +1,42 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: 衛星データ解析ゼミ
+description: 光学とSARの基礎から、生成AIで正しいコードを書く方法、結果を検証するファクトチェックまで。
+template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
+  tagline: 物理を根拠に「疑うべき場所」を特定し、他者が再現できる形に落とす。
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: チュートリアルを始める
+      link: /tutorial/setup/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+    - text: アストロキャンプHP
+      link: https://camp.ase-lab.space/
       icon: external
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-## Next steps
+## 教材
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+<CardGrid>
+	<LinkCard
+		title="課題と対象エリア"
+		description="福島県相馬市・南相馬市の農地を衛星で見る。通しの課題、対象エリア、使うデータと出典。"
+		href="/mission/overview/"
+	/>
+	<LinkCard
+		title="チュートリアル"
+		description="GEE・Copernicus・Colab の環境構築から、生成AIを使ったGISコーディングまでの手順書とノートブック。"
+		href="/tutorial/setup/"
+	/>
+	<LinkCard
+		title="演習"
+		description="Week 1〜4 の演習ノートブック。Colab でそのまま開ける。"
+		href="/exercises/"
+	/>
+	<LinkCard
+		title="スライド"
+		description="各回の講義スライド（画像の権利確認が済んだものから公開）。"
+		href="/slides/"
+	/>
 </CardGrid>
