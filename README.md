@@ -1,49 +1,44 @@
-# Starlight Starter Kit: Basics
+# astrocamp-sat-gis
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+アストロキャンプ「衛星データ解析ゼミ」の公開教材サイト（[衛星開発ゼミ](https://astrocamp-sat-dev.pages.dev/) の衛星データ解析版）。[Astro Starlight](https://starlight.astro.build) で作り、Cloudflare Pages で公開する。
 
-```
-npm create astro@latest -- --template starlight
-```
+## 構成
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+```text
+src/content/docs/
+  index.mdx         トップページ
+  mission/          課題の全体像・対象エリア・データの出典
+  tutorial/         環境構築・生成AI・データ準備・OSM ガイドとノートブック一覧
+  exercises/        週ごとの演習
+  slides/           講義スライド（権利確認済みのみ）
+public/notebooks/   ノートブックとコード（Colab バッジはこのパスを開く）
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+## ページを追加する
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+1. `src/content/docs/<セクション>/` に `.md` を置く。先頭に `title` を書く：
+   ```md
+   ---
+   title: ページのタイトル
+   sidebar:
+     order: 3
+   ---
+   ```
+2. ノートブックは `public/notebooks/` に置き、Colab バッジは
+   `https://colab.research.google.com/github/astrocamp-2026-siaPpts/astrocamp-sat-gis/blob/main/public/notebooks/<パス>` を指す。
+   **出力セルは消してからコミットする**（ローカルのパスや GEE プロジェクトIDが残るため）。
 
-Static assets, like favicons, can be placed in the `public/` directory.
+## 公開してよいもの
 
-## 🧞 Commands
+このリポジトリは**公開**。載せる前に確認する。
 
-All commands are run from the root of the project, from a terminal:
+- 画像は Copernicus Sentinel・Landsat・JAXA・国土地理院など、自由に使えるデータから作ったものか、許諾を得たものだけ。クレジットを入れる
+- 解答（`ex_solution`）、評価シート、参加者の氏名・提出物、メンター向け資料は載せない。これらは非公開リポジトリ `astrocamp-2026-sia` に置く
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## コマンド
 
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+| コマンド | 内容 |
+| --- | --- |
+| `npm install` | 依存関係をインストール |
+| `npm run dev` | ローカルで確認（http://localhost:4321） |
+| `npm run build` | `./dist/` にビルド。push 前に通ることを確認する |
